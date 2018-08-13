@@ -1,0 +1,21 @@
+ <div class="container p-1 text-white " style="background-color: #A1BEB4;">
+		  <ul class="nav  justify-content-end">
+			  <%if user_signed_in? %>
+				  <li class="nav-item">
+					<%=link_to "Inicio", root_path, :class => "nav-link  text-dark"%>
+				  </li>
+				   <li class="nav-item">
+					<%=link_to "Crear", new_event_path, :class => "nav-link  text-dark"%>
+				  </li>
+				  <li class="nav-item">
+					<%=link_to "Cerrar sesion", destroy_user_session_path, method: :delete, :class => "nav-link  btn btn-outline-dark"%>
+				  </li>
+				  
+					
+			  <%else%>
+					<li class="nav-item">
+						<%=link_to "Crear cuenta", new_user_registration_path, :class => "nav-link  btn btn btn-info"%>
+					</li>
+			  <%end%>			  
+		</ul>
+	 </div>	

@@ -1,0 +1,67 @@
+<%= form_for (@event) do |f| %>
+	<div class="field">
+		<%= f.label :name%>
+		<%= f.text_field :name, class:"form-control col-md-6" %>
+		<% if @event.errors[:name].any? %>
+			<span class="badge badge-pill badge-danger " >
+				<%=@event.errors[:name].first%>
+			</span>
+		<% end %>
+	</div>
+	
+	<div class="field">
+		<%= f.label "Tipo de evento"%>
+		<%= f.select :category_id, options_for_select(Category.all.collect {|c| [c.name, c.id]}, selected: @event.category_id), { :include_blank => "Selecciona una categoria"}, {:class => "form-control col-md-6"}   %>
+		<% if @event.errors[:category_id].any? %>
+			<span class="badge badge-pill badge-danger " >
+				<%=@event.errors[:category_id].first%>
+			</span>
+		<% end %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :place%>
+		<%= f.text_field :place, class:"form-control col-md-6" %>
+		<% if @event.errors[:place].any? %>
+			<span class="badge badge-pill badge-danger " >
+				<%=@event.errors[:place].first%>
+			</span>
+		<% end %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :address%>
+		<%= f.text_field :address, class:"form-control col-md-6" %>
+		<% if @event.errors[:address].any? %>
+			<span class="badge badge-pill badge-danger " >
+				<%=@event.errors[:address].first%>
+			</span>
+		<% end %>
+	</div>
+	
+	<div class="field">
+		<%= f.label "Fecha de inicio"%>
+		<%= f.date_field :start_date, class: "form-control  col-md-3" %>
+		<% if @event.errors[:start_date].any? %>
+			<span class="badge badge-pill badge-danger " >
+				<%=@event.errors[:start_date].first%>
+			</span>
+		<% end %>
+		<%= f.label "Fecha de cierre"%>
+		<%= f.date_field :end_date, class: "form-control  col-md-3" %>
+		<% if @event.errors[:end_date].any? %>
+			<span class="badge badge-pill badge-danger " >
+				<%=@event.errors[:end_date].first%>
+			</span>
+		<% end %>
+	</div>
+	
+	</br>
+	<div class="field">
+		<%= f.check_box :is_virtual%>
+		<%= f.label :is_virtual%>
+	</div>
+	</br>
+	<%= f.submit "Guardar", class:"btn btn-success" %>
+
+<% end %>
